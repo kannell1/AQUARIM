@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* Шрифты из пользовательского архива. Остальные стили задаются className в JSX. */
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Semibold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oceanic";
+  src: url("/fonts/Oceanic-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oceanic";
+  src: url("/fonts/Oceanic-Medium.otf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@theme inline {
+  --font-gilroy: "Gilroy", Arial, sans-serif;
+  --font-oceanic: "Oceanic", Georgia, serif;
+}
