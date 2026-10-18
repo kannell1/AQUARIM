@@ -55,7 +55,7 @@ export function ReviewsSection() {
     <section
       id="reviews"
       aria-labelledby="reviews-heading"
-      className="relative isolate scroll-mt-[50px] pb-[120px] pt-[100px] lg:pb-[150px] lg:pt-[157px]"
+      className="relative isolate scroll-mt-[50px] pb-[120px] pt-[60px] lg:pb-[150px] lg:pt-[65px]"
     >
       {/* Мягкий синий градиент — только цвета из исходного макета. */}
       <div

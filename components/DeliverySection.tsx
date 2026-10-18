@@ -10,7 +10,7 @@ export function DeliverySection() {
     <section
       id="delivery"
       aria-labelledby="delivery-heading"
-      className="relative mx-auto w-[calc(100%-32px)] max-w-[1660px] scroll-mt-[40px] pb-[100px] pt-[86px] sm:w-[calc(100%-48px)] sm:pt-[100px] lg:w-[calc(100%-96px)] lg:pb-[120px] lg:pt-[116px] xl:w-[calc(100%-200px)]"
+      className="relative mx-auto w-[calc(100%-32px)] max-w-[1660px] scroll-mt-[40px] pb-[55px] pt-[45px] sm:w-[calc(100%-48px)] sm:pt-[55px] lg:w-[calc(100%-96px)] lg:pb-[60px] lg:pt-[55px] xl:w-[calc(100%-200px)]"
     >
       {/* Светлое пятно на тёмно-синем фоне — из палитры макета. */}
       <div
