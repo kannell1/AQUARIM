@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { HistorySection } from "@/components/HistorySection";
 import { DishesSection } from "@/components/DishesSection";
+import { DeliverySection } from "@/components/DeliverySection";
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
         <HeroSection />
         <HistorySection />
         <DishesSection />
+        <DeliverySection />
       </main>
     </div>
   );

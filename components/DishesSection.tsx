@@ -95,16 +95,16 @@ export function DishesSection() {
           <h3 className="font-oceanic text-[clamp(28px,7vw,45px)] font-medium uppercase leading-[1.1] lg:text-[clamp(32px,3vw,44px)]">
             {dish.title}
           </h3>
-          <p className="mt-[22px] max-w-[395px] text-[15px] leading-[1.42] sm:text-[17px] lg:mt-[26px] lg:text-[18px]">
+          <p className="mt-[22px] max-w-[420px] text-[17px] leading-[1.44] sm:text-[19px] lg:mt-[26px] lg:text-[20px] 2xl:text-[21px]">
             {dish.description}
           </p>
-          <p className="mt-[22px] text-[16px] font-medium leading-none sm:text-[18px] lg:mt-[25px]">
+          <p className="mt-[22px] text-[18px] font-medium leading-none sm:text-[19px] lg:mt-[25px] lg:text-[20px]">
             {dish.price}
           </p>
           <button
             type="button"
             onClick={addToCart}
-            className="mt-[28px] flex h-[54px] w-[175px] items-center justify-center bg-[#E9663D] text-[16px] font-medium text-[#E8EDFF] transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8EDFF] sm:h-[60px] lg:mt-[32px]"
+            className="mt-[28px] flex h-[54px] w-[175px] items-center justify-center bg-[#E9663D] text-[17px] font-medium text-[#E8EDFF] transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8EDFF] sm:h-[60px] lg:mt-[32px] lg:text-[18px]"
           >
             В корзину
           </button>
@@ -133,10 +133,12 @@ export function DishesSection() {
         </button>
       </div>
 
-      {/* Полная страница меню появится на следующем этапе. Пока ведём к карточке блюд. */}
+      {/* На больших экранах тарелка выступает за нижний край синей карточки.
+          Отступ рассчитан от НИЖНЕГО КРАЯ тарелки: половина её диаметра
+          минус половина высоты карточки, плюс 30 px до кнопки. */}
       <a
         href="#featured-dish"
-        className="mx-auto mt-[64px] flex h-[66px] w-[240px] max-w-full items-center justify-center border border-[#496192] text-[17px] text-[#E8EDFF] transition-colors hover:bg-[#496192]/25"
+        className="mx-auto mt-[30px] flex h-[66px] w-[240px] max-w-full items-center justify-center border border-[#496192] text-[18px] text-[#E8EDFF] transition-colors hover:bg-[#496192]/25 lg:mt-[max(30px,calc(min(19.5vw,290px)_-_165px))]"
       >
         Перейти в меню
       </a>

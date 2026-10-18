@@ -4,7 +4,7 @@ export function HeroSection() {
   return (
     <section
       aria-label="Рыбный ресторан AQUARIM"
-      className="relative mx-auto min-h-[1220px] w-[calc(100%-32px)] max-w-[1660px] sm:min-h-[1170px] sm:w-[calc(100%-48px)] lg:h-[730px] lg:min-h-0 lg:w-[calc(100%-96px)] xl:w-[calc(100%-200px)]"
+      className="relative mx-auto min-h-[1290px] w-[calc(100%-32px)] max-w-[1660px] sm:min-h-[1240px] sm:w-[calc(100%-48px)] lg:h-[730px] lg:min-h-0 lg:w-[calc(100%-96px)] xl:w-[calc(100%-200px)]"
     >
       {/* На широком экране — по 100px по бокам, на узком — адаптивные поля. */}
       {/* Большая надпись за креветкой — как на макете. */}
@@ -30,14 +30,14 @@ export function HeroSection() {
             Рыбный
           </h2>
 
-          <p className="mt-[28px] max-w-[345px] text-[17px] leading-[1.42] sm:text-[18px] lg:mt-[48px]">
+          <p className="mt-[28px] max-w-[365px] text-[18px] leading-[1.44] sm:text-[20px] lg:mt-[44px] xl:text-[21px]">
             Свежая рыба из наших аквариумов с нашим рыбным меню,
             приготовленным специально для вас.
           </p>
 
           <a
             href="#menu"
-            className="mt-[26px] inline-flex h-[66px] w-[235px] items-center justify-center bg-[#E9663D] text-[17px] font-medium leading-none text-[#E8EDFF] transition-opacity hover:opacity-85 sm:h-[72px] sm:w-[285px] lg:mt-[30px]"
+            className="mt-[26px] inline-flex h-[66px] w-[235px] items-center justify-center bg-[#E9663D] text-[18px] font-medium leading-none text-[#E8EDFF] transition-opacity hover:opacity-85 sm:h-[72px] sm:w-[285px] lg:mt-[30px]"
           >
             Меню
           </a>
@@ -57,7 +57,7 @@ export function HeroSection() {
                 height={44}
                 className="mt-[2px] h-[38px] w-[38px] shrink-0 sm:h-[44px] sm:w-[44px]"
               />
-              <p className="max-w-[325px] text-[17px] leading-[1.4] sm:text-[18px]">
+              <p className="max-w-[350px] text-[18px] leading-[1.44] sm:text-[20px] xl:text-[21px]">
                 Свежая рыба из наших аквариумов — гарантированная свежесть
               </p>
             </li>
@@ -69,7 +69,7 @@ export function HeroSection() {
                 height={44}
                 className="mt-[2px] h-[38px] w-[38px] shrink-0 sm:h-[44px] sm:w-[44px]"
               />
-              <p className="max-w-[325px] text-[17px] leading-[1.4] sm:text-[18px]">
+              <p className="max-w-[350px] text-[18px] leading-[1.44] sm:text-[20px] xl:text-[21px]">
                 Качественная доставка, где горячие блюда сохраняют свой вкус
               </p>
             </li>
