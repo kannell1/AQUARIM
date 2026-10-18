@@ -5,7 +5,7 @@ export function HistorySection() {
     <section
       id="history"
       aria-labelledby="history-heading"
-      className="relative mx-auto w-[calc(100%-48px)] max-w-[1200px] scroll-mt-[34px] pb-[120px] pt-[90px] sm:pb-[150px] lg:w-[calc(100%-80px)] lg:pt-[86px] lg:pb-[155px]"
+      className="relative mx-auto w-[calc(100%-32px)] max-w-[1660px] scroll-mt-[34px] pb-[120px] pt-[90px] sm:w-[calc(100%-48px)] sm:pb-[150px] lg:w-[calc(100%-96px)] xl:w-[calc(100%-200px)] lg:pt-[86px] lg:pb-[155px]"
     >
       {/* На десктопе первая и вторая строки заголовка выровнены, как в макете. */}
       <div className="flex flex-col gap-[22px] sm:gap-[15px] lg:flex-row lg:items-baseline lg:gap-[78px]">
@@ -23,8 +23,8 @@ export function HistorySection() {
         Искушения
       </p>
 
-      <div className="mt-[32px] grid items-start gap-[42px] lg:mt-[21px] lg:grid-cols-[minmax(0,1fr)_minmax(0,590px)] lg:gap-[88px]">
-        <div className="max-w-[510px] pt-[3px] lg:pt-[15px]">
+      <div className="mt-[32px] grid items-start gap-[42px] lg:mt-[21px] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.03fr)] lg:items-stretch lg:gap-[clamp(40px,5.3vw,100px)]">
+        <div className="max-w-[510px] pt-[3px] lg:flex lg:max-w-[none] lg:flex-col lg:gap-y-[26px] lg:pt-[15px]">
           <p className="text-[17px] leading-[1.4] sm:text-[18px]">
             Наша история началась с мечты о создании места, где каждый может
             насладиться непревзойденным вкусом свежей рыбы прямо у себя дома.
@@ -32,13 +32,13 @@ export function HistorySection() {
             блюда из рыбы — мы хотели подарить вам настоящее морское путешествие.
           </p>
 
-          <p className="mt-[22px] text-[17px] leading-[1.4] sm:text-[18px]">
+          <p className="mt-[22px] text-[17px] leading-[1.4] sm:text-[18px] lg:mt-0">
             Мы — это место, где каждая деталь имеет значение.
           </p>
 
           <a
             href="#top"
-            className="mt-[42px] inline-flex h-[72px] w-[285px] max-w-full items-center justify-center border border-[#496192] bg-transparent text-[17px] leading-none text-[#E8EDFF] transition-colors hover:bg-[#496192]/25"
+            className="mt-[42px] inline-flex h-[72px] w-[285px] max-w-full items-center justify-center border border-[#496192] bg-transparent text-[17px] leading-none text-[#E8EDFF] transition-colors hover:bg-[#496192]/25 lg:mt-auto lg:self-start"
           >
             Узнать больше
           </a>
@@ -50,7 +50,7 @@ export function HistorySection() {
           width={590}
           height={374}
           sizes="(min-width: 1024px) 590px, 100vw"
-          className="h-auto w-full object-cover"
+          className="h-auto w-full object-cover lg:h-full lg:self-stretch"
         />
       </div>
     </section>

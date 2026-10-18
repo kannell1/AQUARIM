@@ -9,7 +9,7 @@ const navigation = [
 
 export function Header() {
   return (
-    <header className="relative z-30 mx-auto flex h-[84px] w-[calc(100%-48px)] max-w-[1200px] items-center justify-between lg:w-[calc(100%-80px)]">
+    <header className="relative z-30 mx-auto flex h-[84px] w-[calc(100%-32px)] max-w-[1660px] items-center justify-between sm:w-[calc(100%-48px)] lg:w-[calc(100%-96px)] xl:w-[calc(100%-200px)]">
       <a
         href="#top"
         aria-label="AQUARIM — на главную"

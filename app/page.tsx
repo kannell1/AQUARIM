@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { HistorySection } from "@/components/HistorySection";
+import { DishesSection } from "@/components/DishesSection";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <HistorySection />
+        <DishesSection />
       </main>
     </div>
   );
