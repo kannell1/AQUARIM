@@ -55,7 +55,7 @@ export function DishesSection() {
     <section
       id="menu"
       aria-labelledby="dishes-heading"
-      className="relative mx-auto w-[calc(100%-32px)] max-w-[1660px] scroll-mt-[40px] pb-[70px] pt-[12px] sm:w-[calc(100%-48px)] sm:pb-[80px] lg:w-[calc(100%-96px)] xl:w-[calc(100%-200px)] lg:pb-[75px]"
+      className="relative mx-auto w-[calc(100%-32px)] max-w-[1660px] scroll-mt-[40px] pb-[70px] pt-[55px] sm:w-[calc(100%-48px)] sm:pb-[80px] lg:w-[calc(100%-96px)] xl:w-[calc(100%-200px)] lg:pb-[75px] lg:pt-[55px]"
     >
       {/* Маленькая подпись слева и заголовок в две строки — по макету. */}
       <div className="flex flex-col gap-[18px] lg:flex-row lg:items-baseline lg:gap-[78px]">

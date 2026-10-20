@@ -4,6 +4,8 @@ import { HistorySection } from "@/components/HistorySection";
 import { DishesSection } from "@/components/DishesSection";
 import { DeliverySection } from "@/components/DeliverySection";
 import { ReviewsSection } from "@/components/ReviewsSection";
+import { PromotionsSection } from "@/components/PromotionsSection";
+import { BookingSection } from "@/components/BookingSection";
 
 export default function HomePage() {
   return (
@@ -24,6 +26,8 @@ export default function HomePage() {
         <DishesSection />
         <DeliverySection />
         <ReviewsSection />
+        <PromotionsSection />
+        <BookingSection />
       </main>
     </div>
   );

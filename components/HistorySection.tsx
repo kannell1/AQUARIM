@@ -5,7 +5,7 @@ export function HistorySection() {
     <section
       id="history"
       aria-labelledby="history-heading"
-      className="relative mx-auto w-[calc(100%-32px)] max-w-[1660px] scroll-mt-[34px] pb-[120px] pt-[90px] sm:w-[calc(100%-48px)] sm:pb-[150px] lg:w-[calc(100%-96px)] xl:w-[calc(100%-200px)] lg:pt-[86px] lg:pb-[155px]"
+      className="relative mx-auto w-[calc(100%-32px)] max-w-[1660px] scroll-mt-[34px] pb-[70px] pt-[90px] sm:w-[calc(100%-48px)] sm:pb-[75px] lg:w-[calc(100%-96px)] xl:w-[calc(100%-200px)] lg:pt-[86px] lg:pb-[70px]"
     >
       {/* На десктопе первая и вторая строки заголовка выровнены, как в макете. */}
       <div className="flex flex-col gap-[22px] sm:gap-[15px] lg:flex-row lg:items-baseline lg:gap-[78px]">

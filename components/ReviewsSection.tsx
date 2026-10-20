@@ -55,7 +55,7 @@ export function ReviewsSection() {
     <section
       id="reviews"
       aria-labelledby="reviews-heading"
-      className="relative isolate scroll-mt-[50px] pb-[120px] pt-[60px] lg:pb-[150px] lg:pt-[65px]"
+      className="relative isolate scroll-mt-[50px] pb-[70px] pt-[60px] lg:pb-[70px] lg:pt-[65px]"
     >
       {/* Мягкий синий градиент — только цвета из исходного макета. */}
       <div
@@ -76,7 +76,7 @@ export function ReviewsSection() {
             Бесценные отзывы
           </h2>
         </div>
-        <p className="mt-[8px] font-oceanic text-[clamp(32px,7.2vw,56px)] font-medium uppercase leading-[1] tracking-[-0.006em] text-[#E8EDFF] lg:mt-[3px] lg:text-[clamp(42px,3.8vw,68px)] 2xl:text-[68px]">
+        <p className="mt-[8px] font-oceanic text-[clamp(32px,7.2vw,56px)] font-medium uppercase leading-[1] tracking-[-0.006em] text-[#E8EDFF] lg:mt-[3px] lg:text-[clamp(42px,3.8vw,64px)] 2xl:text-[64px]">
           Доказывающие наше мастерство
         </p>
 
