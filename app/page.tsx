@@ -6,6 +6,8 @@ import { DeliverySection } from "@/components/DeliverySection";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { PromotionsSection } from "@/components/PromotionsSection";
 import { BookingSection } from "@/components/BookingSection";
+import { ContactsSection } from "@/components/ContactsSection";
+import { Footer } from "@/components/Footer";
 
 export default function HomePage() {
   return (
@@ -28,7 +30,9 @@ export default function HomePage() {
         <ReviewsSection />
         <PromotionsSection />
         <BookingSection />
+        <ContactsSection />
       </main>
+      <Footer />
     </div>
   );
 }

@@ -23,7 +23,7 @@ export function Header() {
           <a
             key={item.label}
             href={item.href}
-            className="whitespace-nowrap text-[13px] leading-none transition-opacity hover:opacity-65 lg:text-[14px]"
+            className="whitespace-nowrap font-gilroy text-[15px] leading-none transition-opacity hover:opacity-65 lg:text-[17px]"
           >
             {item.label}
           </a>
@@ -51,7 +51,7 @@ export function Header() {
         </summary>
         <nav aria-label="Мобильная навигация" className="absolute right-0 top-[48px] z-50 flex w-[240px] flex-col gap-5 border border-[#496192] bg-[#011845] px-6 py-6 shadow-xl">
           {navigation.map((item) => (
-            <a key={item.label} href={item.href} className="text-[15px] transition-opacity hover:opacity-65">
+            <a key={item.label} href={item.href} className="font-gilroy text-[17px] transition-opacity hover:opacity-65">
               {item.label}
             </a>
           ))}
