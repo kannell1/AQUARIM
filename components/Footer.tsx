@@ -66,7 +66,7 @@ export function Footer() {
           AQUARIM
         </a>
 
-        <div className="mt-[34px] flex flex-col gap-[14px] font-gilroy text-[15px] leading-[1.3] sm:flex-row sm:items-center sm:justify-between sm:text-[17px] lg:mt-[28px]">
+        <div className="mt-[34px] flex flex-col gap-[14px] font-gilroy text-[15px] leading-[1.3] sm:flex-row sm:items-center sm:justify-between sm:text-[17px] lg:mt-[74px]">
           {/* Текст политики из макета; ссылку добавим, когда будет готова сама политика. */}
           <span>Политика обработки персональных данных</span>
           <span>Design by @sshultse</span>
