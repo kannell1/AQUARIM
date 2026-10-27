@@ -55,7 +55,7 @@ export function ReviewsSection() {
     <section
       id="reviews"
       aria-labelledby="reviews-heading"
-      className="relative isolate scroll-mt-[50px] pb-[70px] pt-[60px] lg:pb-[70px] lg:pt-[65px]"
+      className="relative isolate scroll-mt-[50px] pb-[70px] pt-[60px] lg:pb-[70px] lg:pt-[65px] lg:max-xl:pt-[55px] lg:max-xl:pb-[75px]"
     >
       {/* Мягкий синий градиент — только цвета из исходного макета. */}
       <div
@@ -63,25 +63,25 @@ export function ReviewsSection() {
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_18%_69%,#49619255_0%,transparent_60%)]"
       />
 
-      <div className="mx-auto w-[calc(100%-32px)] max-w-[1660px] sm:w-[calc(100%-48px)] lg:w-[calc(100%-96px)] xl:w-[calc(100%-200px)] xl:px-[45px]">
+      <div className="mx-auto w-[calc(100%-32px)] max-w-[1660px] sm:w-[calc(100%-48px)] lg:w-[calc(100%-96px)] lg:max-xl:max-w-[744px] lg:max-xl:px-0 xl:w-[calc(100%-200px)] xl:px-[45px]">
         {/* Заголовок повторяет две строки макета. */}
-        <div className="flex flex-col gap-[16px] lg:flex-row lg:items-start lg:gap-[30px]">
-          <span className="shrink-0 font-gilroy text-[13px] font-medium uppercase leading-[1.2] text-[#E8EDFF] lg:w-[216px] lg:pt-[28px] lg:text-[15px]">
+        <div className="flex flex-col gap-[16px] lg:flex-row lg:items-start lg:gap-[30px] lg:max-xl:gap-[10px]">
+          <span className="shrink-0 font-gilroy text-[13px] font-medium uppercase leading-[1.2] text-[#E8EDFF] lg:w-[216px] lg:pt-[28px] lg:text-[15px] lg:max-xl:w-[170px] lg:max-xl:pt-[9px] lg:max-xl:text-[12px]">
             Отзывы
           </span>
           <h2
             id="reviews-heading"
-            className="font-oceanic text-[clamp(32px,7.2vw,56px)] font-medium uppercase leading-[1] tracking-[-0.006em] text-[#E8EDFF] lg:text-[clamp(42px,3.8vw,68px)] 2xl:text-[68px]"
+            className="font-oceanic text-[clamp(32px,7.2vw,56px)] font-medium uppercase leading-[1] tracking-[-0.006em] text-[#E8EDFF] lg:text-[clamp(42px,3.8vw,68px)] 2xl:text-[68px] lg:max-xl:text-[36px]"
           >
             Бесценные отзывы
           </h2>
         </div>
-        <p className="mt-[8px] font-oceanic text-[clamp(32px,7.2vw,56px)] font-medium uppercase leading-[1] tracking-[-0.006em] text-[#E8EDFF] lg:mt-[3px] lg:text-[clamp(42px,3.8vw,64px)] 2xl:text-[64px]">
+        <p className="mt-[8px] font-oceanic text-[clamp(32px,7.2vw,56px)] font-medium uppercase leading-[1] tracking-[-0.006em] text-[#E8EDFF] lg:mt-[3px] lg:text-[clamp(42px,3.8vw,64px)] 2xl:text-[64px] lg:max-xl:text-[36px]">
           Доказывающие наше мастерство
         </p>
 
-        <div className="mt-[34px] flex flex-col items-stretch gap-[22px] sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-[26px] lg:mt-[49px] lg:flex-nowrap lg:pl-[33.6%]">
-          <p className="w-full max-w-[530px] font-gilroy text-[18px] sm:w-auto leading-[1.25] text-[#E8EDFF] sm:text-[20px] xl:text-[22px]">
+        <div className="mt-[34px] flex flex-col items-stretch gap-[22px] sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-[26px] lg:mt-[49px] lg:flex-nowrap lg:pl-[33.6%] lg:max-xl:mt-[12px] lg:max-xl:pl-[180px]">
+          <p className="w-full max-w-[530px] font-gilroy text-[18px] sm:w-auto leading-[1.25] text-[#E8EDFF] sm:text-[20px] xl:text-[22px] lg:max-xl:text-[15px] lg:max-xl:leading-[1.28]">
             <span className="lg:block">Мы гордимся доверием наших клиентов </span>
             <span className="lg:block">и ценим каждый отзыв, который вдохновляет </span>
             <span className="lg:block">нас становиться еще лучше</span>
@@ -112,9 +112,9 @@ export function ReviewsSection() {
         </div>
 
         {/* На широком экране: оранжевая карточка + ровно пять фото в ряд. */}
-        <div className="mt-[46px] flex snap-x snap-mandatory gap-[16px] overflow-x-auto pb-[6px] lg:mt-[44px] lg:grid lg:grid-cols-6 lg:gap-[28px] lg:overflow-visible lg:pb-0">
-          <div className="flex aspect-[180/260] w-[190px] shrink-0 snap-start flex-col items-center justify-center bg-[#E9663D] px-[16px] text-center text-[#E8EDFF] sm:w-[212px] lg:w-auto">
-            <p className="font-gilroy text-[18px] font-medium leading-[1.14] sm:text-[20px] xl:text-[21px]">
+        <div className="mt-[46px] flex snap-x snap-mandatory gap-[16px] overflow-x-auto pb-[6px] lg:mt-[44px] lg:grid lg:grid-cols-6 lg:gap-[28px] lg:overflow-visible lg:pb-0 lg:max-xl:mt-[25px] lg:max-xl:flex lg:max-xl:gap-[6px] lg:max-xl:overflow-hidden">
+          <div className="flex aspect-[180/260] w-[190px] shrink-0 snap-start flex-col items-center justify-center bg-[#E9663D] px-[16px] text-center text-[#E8EDFF] sm:w-[212px] lg:w-auto lg:max-xl:w-[calc(25%_-_4.5px)]">
+            <p className="font-gilroy text-[18px] font-medium leading-[1.14] sm:text-[20px] xl:text-[21px] lg:max-xl:text-[14px]">
               Кликните
               <br />
               на отзыв, чтобы
@@ -124,7 +124,7 @@ export function ReviewsSection() {
             <svg
               aria-hidden="true"
               viewBox="0 0 124 94"
-              className="mt-[12px] h-[94px] w-[124px] max-w-full text-[#E8EDFF]"
+              className="mt-[12px] h-[94px] w-[124px] max-w-full lg:max-xl:h-[70px] lg:max-xl:w-[95px] text-[#E8EDFF]"
               fill="none"
               stroke="currentColor"
               strokeWidth="3.2"
@@ -144,7 +144,7 @@ export function ReviewsSection() {
                 type="button"
                 aria-label={`Открыть фото: ${photo.alt}`}
                 onClick={() => setOpenedPhoto(photoIndex)}
-                className="relative aspect-[180/260] w-[190px] shrink-0 snap-start overflow-hidden outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E8EDFF] sm:w-[212px] lg:w-auto"
+                className="relative aspect-[180/260] w-[190px] shrink-0 snap-start overflow-hidden outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E8EDFF] sm:w-[212px] lg:w-auto lg:max-xl:w-[calc(25%_-_4.5px)]"
               >
                 <Image
                   src={photo.src}

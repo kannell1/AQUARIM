@@ -30,25 +30,25 @@ export function PromotionsSection() {
     <section
       id="offers"
       aria-labelledby="offers-heading"
-      className="relative isolate scroll-mt-[40px] pb-[70px] pt-[55px] sm:pb-[70px] lg:pb-[110px] lg:pt-[55px]"
+      className="relative isolate scroll-mt-[40px] pb-[70px] pt-[55px] sm:pb-[70px] lg:pb-[110px] lg:pt-[55px] lg:max-xl:pb-[70px] lg:max-xl:pt-[60px]"
     >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_6%_18%,#49619240_0%,transparent_55%)]"
       />
 
-      <div className="mx-auto w-[calc(100%-32px)] max-w-[1660px] sm:w-[calc(100%-48px)] lg:w-[calc(100%-96px)] xl:w-[calc(100%-200px)] xl:px-[35px]">
+      <div className="mx-auto w-[calc(100%-32px)] max-w-[1660px] sm:w-[calc(100%-48px)] lg:w-[calc(100%-96px)] lg:max-xl:max-w-[744px] xl:w-[calc(100%-200px)] xl:px-[35px]">
         {/* Как в макете: метка и первая строка справа, вторая строка от левого края. */}
         <div className="flex flex-col gap-[16px] lg:flex-row lg:items-start lg:gap-0">
-          <span className="shrink-0 font-gilroy text-[12px] font-medium uppercase leading-[1.2] text-[#E8EDFF] lg:w-[225px] lg:pt-[26px] lg:text-[13px]">
+          <span className="shrink-0 font-gilroy text-[12px] font-medium uppercase leading-[1.2] text-[#E8EDFF] lg:w-[225px] lg:pt-[26px] lg:max-xl:w-[180px] lg:max-xl:pt-[10px] lg:text-[13px]">
             Акции
           </span>
           <h2
             id="offers-heading"
-            className="font-oceanic text-[clamp(34px,8vw,58px)] font-medium uppercase leading-[1.03] tracking-[-0.006em] text-[#E8EDFF] lg:text-[clamp(46px,4vw,62px)]"
+            className="font-oceanic text-[clamp(34px,8vw,58px)] font-medium uppercase leading-[1.03] tracking-[-0.006em] text-[#E8EDFF] lg:text-[clamp(46px,4vw,62px)] lg:max-xl:text-[36px]"
           >
             <span className="block">Оазис выгодных</span>
-            <span className="block lg:-ml-[225px]">предложений</span>
+            <span className="block lg:-ml-[225px] lg:max-xl:-ml-[180px]">предложений</span>
           </h2>
         </div>
 
@@ -56,7 +56,7 @@ export function PromotionsSection() {
           role="region"
           aria-roledescription="карусель"
           aria-label="Акция на первый заказ"
-          className="relative mt-[76px] flex min-h-[630px] items-end bg-[#496192] px-[48px] pb-[38px] pt-[325px] sm:min-h-[690px] sm:px-[68px] sm:pt-[355px] lg:mt-[74px] lg:min-h-[430px] lg:items-center lg:px-[85px] lg:py-[54px] xl:pl-[112px]"
+          className="relative mt-[76px] flex min-h-[630px] items-end bg-[#496192] px-[48px] pb-[38px] pt-[325px] sm:min-h-[690px] sm:px-[68px] sm:pt-[355px] lg:mt-[74px] lg:min-h-[430px] lg:items-center lg:px-[85px] lg:py-[54px] xl:pl-[112px] lg:max-xl:mt-[26px] lg:max-xl:min-h-[365px] lg:max-xl:px-[65px] lg:max-xl:py-[34px]"
         >
           <button
             type="button"
@@ -69,19 +69,19 @@ export function PromotionsSection() {
             </svg>
           </button>
 
-          <div className="relative z-10 w-full max-w-[455px] lg:w-[46%]" aria-live="polite">
-            <h3 className="font-oceanic text-[clamp(30px,7.5vw,42px)] font-medium uppercase leading-[1.05] text-[#E8EDFF] lg:text-[clamp(32px,2.75vw,42px)]">
+          <div className="relative z-10 w-full max-w-[455px] lg:w-[46%] lg:max-xl:w-[39%]" aria-live="polite">
+            <h3 className="font-oceanic text-[clamp(30px,7.5vw,42px)] font-medium uppercase leading-[1.05] text-[#E8EDFF] lg:text-[clamp(32px,2.75vw,42px)] lg:max-xl:text-[28px]">
               Скидка 15%
               <br />
               на первый заказ
             </h3>
-            <p className="mt-[24px] max-w-[455px] font-gilroy text-[17px] leading-[1.24] text-[#E8EDFF] sm:text-[19px] lg:mt-[26px] xl:text-[21px]">
+            <p className="mt-[24px] max-w-[455px] font-gilroy text-[17px] leading-[1.24] text-[#E8EDFF] sm:text-[19px] lg:mt-[26px] xl:text-[21px] lg:max-xl:mt-[14px] lg:max-xl:text-[15px] lg:max-xl:leading-[1.28]">
               Воспользуйтесь этой прекрасной возможностью и откройте для себя мир
               изысканных морских деликатесов, которыми славится наш ресторан
             </p>
             <a
               href="#menu"
-              className="mt-[30px] flex h-[62px] w-[220px] max-w-full items-center justify-center bg-[#E9663D] px-[15px] font-gilroy text-[18px] font-medium text-[#E8EDFF] transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E8EDFF] sm:h-[72px] sm:w-[255px] sm:text-[20px]"
+              className="mt-[30px] flex h-[62px] w-[220px] max-w-full items-center justify-center bg-[#E9663D] px-[15px] font-gilroy text-[18px] font-medium text-[#E8EDFF] transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E8EDFF] sm:h-[72px] sm:w-[255px] sm:text-[20px] lg:max-xl:mt-[18px] lg:max-xl:h-[52px] lg:max-xl:w-[185px] lg:max-xl:text-[16px]"
             >
               Забрать скидку
             </a>
@@ -95,7 +95,7 @@ export function PromotionsSection() {
             width={480}
             height={480}
             sizes="(min-width: 1600px) 535px, (min-width: 1024px) 38vw, (min-width: 640px) 380px, 84vw"
-            className="pointer-events-none absolute left-1/2 top-[-42px] z-0 h-auto w-[min(82vw,320px)] -translate-x-1/2 select-none sm:top-[-48px] sm:w-[380px] lg:left-auto lg:right-[8.5%] lg:top-1/2 lg:w-[min(39vw,535px)] lg:translate-x-[0px] lg:-translate-y-1/2"
+            className="pointer-events-none absolute left-1/2 top-[-42px] z-0 h-auto w-[min(82vw,320px)] -translate-x-1/2 select-none sm:top-[-48px] sm:w-[380px] lg:left-auto lg:right-[8.5%] lg:top-1/2 lg:w-[min(39vw,535px)] lg:translate-x-[0px] lg:-translate-y-1/2 lg:max-xl:w-[320px]"
           />
 
           <button
