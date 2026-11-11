@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const aboutLinks = [
   { label: "О шефе", href: "#history" },
   { label: "Галерея", href: "#reviews" },
@@ -67,7 +69,7 @@ export function Footer() {
         </a>
 
         <div className="mt-[34px] flex flex-col gap-[14px] font-gilroy text-[15px] leading-[1.3] sm:flex-row sm:items-center sm:justify-between sm:text-[17px] lg:mt-[74px] lg:max-xl:mt-[42px] lg:max-xl:text-[15px] max-md:mt-[23px] max-md:gap-[10px] max-md:text-[10px]">
-          <a href="/privacy" className="transition-opacity hover:opacity-75">Политика обработки персональных данных</a>
+          <Link href="/privacy" className="transition-opacity hover:opacity-75">Политика обработки персональных данных</Link>
           <span>Design by @sshultse</span>
         </div>
       </div>

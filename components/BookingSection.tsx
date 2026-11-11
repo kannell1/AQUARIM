@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import emailjs from "@emailjs/browser";
 import { useRef, useState, type FormEvent } from "react";
 
@@ -152,7 +153,7 @@ export function BookingSection() {
 
             <label className="mt-[20px] flex items-start gap-[10px] font-gilroy text-[13px] leading-[1.35] text-[#E8EDFF] max-md:mt-[14px] max-md:text-[11px]">
               <input type="checkbox" name="consent" required className="mt-[2px] h-[17px] w-[17px] shrink-0 accent-[#E9663D]" />
-              <span>Согласен(на) на обработку данных для рассмотрения заявки. <a href="/privacy" className="underline underline-offset-2 hover:text-white">Политика конфиденциальности</a></span>
+              <span>Согласен(на) на обработку данных для рассмотрения заявки. <Link href="/privacy" className="underline underline-offset-2 hover:text-white">Политика конфиденциальности</Link></span>
             </label>
 
             <button
