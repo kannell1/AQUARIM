@@ -2,9 +2,58 @@ import Image from "next/image";
 
 export function HeroSection() {
   return (
-    <section
+    <>
+
+      {/* На телефоне креветка сверху справа; ручка вилки уходит диагонально
+          за правый край, не касаясь заголовка и описания. */}
+      <section
+        aria-label="Рыбный ресторан AQUARIM"
+        className="relative mx-auto w-[calc(100%-32px)] pb-[56px] md:hidden"
+      >
+        <div className="relative min-h-[355px] overflow-visible">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute left-0 top-[52px] whitespace-nowrap font-oceanic text-[clamp(68px,21.5vw,98px)] font-normal uppercase leading-none tracking-[-0.018em] text-[#496192]"
+          >
+            AQUARIM
+          </span>
+          <Image
+            src="/images/shrimp-fork.png"
+            alt="Креветка на вилке, выглядывающая справа"
+            priority
+            width={220}
+            height={600}
+            sizes="150px"
+            className="pointer-events-none absolute right-[-98px] top-[145px] z-10 h-auto w-[155px] -rotate-[27deg] select-none max-[359px]:right-[-135px] max-[359px]:w-[135px]"
+          />
+          <h1 className="relative z-20 max-w-[245px] pt-[176px] font-oceanic text-[clamp(36px,10.8vw,42px)] font-medium uppercase leading-[0.96] tracking-[-0.012em] text-[#E8EDFF]">
+            Рыбный<br />ресторан
+          </h1>
+        </div>
+        <p className="relative z-20 mt-[8px] max-w-[290px] font-gilroy text-[12px] leading-[1.25] text-[#E8EDFF]">
+          Откройте для себя мир изысканных вкусов с нашими рыбными деликатесами,
+          приготовленными специально для вас
+        </p>
+        <a
+          href="#menu"
+          className="relative z-20 mt-[28px] flex h-[56px] w-full items-center justify-center bg-[#E9663D] font-gilroy text-[16px] font-medium leading-none text-[#E8EDFF] transition-opacity hover:opacity-85"
+        >
+          Меню
+        </a>
+        <ul className="relative z-20 mt-[30px] flex flex-col gap-[18px]">
+          <li className="flex items-start gap-[12px]">
+            <Image src="/icons/fish.svg" width={24} height={24} alt="" className="mt-[1px] h-[21px] w-[21px] shrink-0" />
+            <p className="font-gilroy text-[12px] leading-[1.25] text-[#E8EDFF]">Свежая рыба из наших аквариумов — гарантированная свежесть</p>
+          </li>
+          <li className="flex items-start gap-[12px]">
+            <Image src="/icons/delivery.svg" width={24} height={24} alt="" className="mt-[1px] h-[21px] w-[21px] shrink-0" />
+            <p className="font-gilroy text-[12px] leading-[1.25] text-[#E8EDFF]">Качественная доставка, где горячие блюда сохраняют свой вкус</p>
+          </li>
+        </ul>
+      </section>
+      <section
       aria-label="Рыбный ресторан AQUARIM"
-      className="relative mx-auto min-h-[1290px] w-[calc(100%-32px)] max-w-[1660px] sm:min-h-[1240px] sm:w-[calc(100%-48px)] lg:h-[730px] lg:min-h-0 lg:w-[calc(100%-96px)] lg:max-xl:max-w-[744px] lg:max-xl:h-[535px] xl:w-[calc(100%-200px)]"
+      className="hidden md:block relative mx-auto min-h-[1290px] w-[calc(100%-32px)] max-w-[1660px] sm:min-h-[1240px] sm:w-[calc(100%-48px)] lg:h-[730px] lg:min-h-0 lg:w-[calc(100%-96px)] lg:max-xl:max-w-[744px] lg:max-xl:h-[535px] xl:w-[calc(100%-200px)]"
     >
       {/* На широком экране — по 100px по бокам, на узком — адаптивные поля. */}
       {/* Большая надпись за креветкой — как на макете. */}
@@ -77,5 +126,6 @@ export function HeroSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }

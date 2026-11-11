@@ -1,30 +1,94 @@
 "use client";
 
 import Image from "next/image";
-import { useState, type FormEvent } from "react";
+import emailjs from "@emailjs/browser";
+import { useRef, useState, type FormEvent } from "react";
 
 const inputClasses =
-  "mt-[9px] h-[64px] lg:max-xl:h-[60px] w-full min-w-0 rounded-none border border-[#E8EDFF]/80 bg-transparent px-[15px] font-gilroy text-[19px] lg:max-xl:text-[16px] text-[#E8EDFF] outline-none transition-colors focus:border-[#E9663D] focus-visible:ring-1 focus-visible:ring-[#E9663D] [color-scheme:dark]";
+  "mt-[9px] h-[64px] lg:max-xl:h-[60px] w-full min-w-0 rounded-none border border-[#E8EDFF]/80 bg-transparent px-[15px] font-gilroy text-[19px] lg:max-xl:text-[16px] text-[#E8EDFF] outline-none transition-colors focus:border-[#E9663D] focus-visible:ring-1 focus-visible:ring-[#E9663D] [color-scheme:dark] max-md:mt-[5px] max-md:h-[42px] max-md:px-[8px] max-md:text-[14px]";
 
-const labelClasses = "block min-w-0 font-gilroy text-[18px] lg:max-xl:text-[16px] leading-[1.2] text-[#E8EDFF]";
+const labelClasses = "block min-w-0 font-gilroy text-[18px] lg:max-xl:text-[16px] leading-[1.2] max-md:text-[12px] text-[#E8EDFF]";
 
 export function BookingSection() {
   const [formMessage, setFormMessage] = useState("");
+  const [submitState, setSubmitState] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const submitting = useRef(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // В проекте пока нет сервера бронирования. Не сообщаем ложное
-    // подтверждение реального резерва — данные никому не отправляются.
-    setFormMessage(
-      "Это демонстрационная форма. Для настоящего бронирования нужно подключить отправку заявки ресторану.",
-    );
+    if (submitting.current) return;
+
+    const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+    const values = new FormData(form);
+    if (String(values.get("website") ?? "").trim()) return; // Hidden spam trap
+
+    const name = String(values.get("guestName") ?? "").trim();
+    const phone = String(values.get("phone") ?? "").trim();
+    const date = String(values.get("date") ?? "");
+    const time = String(values.get("time") ?? "");
+    const guests = Number(values.get("guests"));
+    const wishes = String(values.get("wishes") ?? "").trim();
+
+    if (!name || !/^[+0-9()\s-]{7,35}$/.test(phone) || !date || !time || !Number.isInteger(guests) || guests < 1 || guests > 30) {
+      setSubmitState("error");
+      setFormMessage("Проверьте имя, номер телефона, дату, время и количество гостей.");
+      return;
+    }
+
+    const now = new Date();
+    const localToday = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    if (date < localToday) {
+      setSubmitState("error");
+      setFormMessage("Выберите сегодняшнюю или будущую дату.");
+      return;
+    }
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    if (!serviceId || !templateId || !publicKey) {
+      setSubmitState("error");
+      setFormMessage("Отправка пока не настроена. Добавьте три ключа EmailJS в .env.local и перезапустите сайт.");
+      return;
+    }
+
+    submitting.current = true;
+    setSubmitState("sending");
+    setFormMessage("Отправляем заявку...");
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          guest_name: name,
+          phone,
+          booking_date: date,
+          booking_time: time,
+          guests: String(guests),
+          wishes: wishes || "Не указаны",
+          source: "AQUARIM — форма бронирования",
+        },
+        { publicKey },
+      );
+      form.reset();
+      setSubmitState("success");
+      setFormMessage("Заявка отправлена! Дождитесь подтверждения бронирования от ресторана.");
+    } catch (error) {
+      console.error("EmailJS booking error:", error);
+      setSubmitState("error");
+      setFormMessage("Не удалось отправить заявку. Проверьте подключение и попробуйте ещё раз или свяжитесь с рестораном по телефону.");
+    } finally {
+      submitting.current = false;
+    }
   }
 
   return (
     <section
       id="booking"
       aria-labelledby="booking-heading"
-      className="relative isolate scroll-mt-[40px] pb-[110px] pt-[65px] lg:pb-[140px] lg:pt-[65px] lg:max-xl:pb-[155px] lg:max-xl:pt-[55px]"
+      className="relative isolate scroll-mt-[40px] pb-[110px] pt-[65px] lg:pb-[140px] lg:pt-[65px] lg:max-xl:pb-[155px] lg:max-xl:pt-[55px] max-md:pt-[45px] max-md:pb-[60px]"
     >
       <div
         aria-hidden="true"
@@ -32,33 +96,36 @@ export function BookingSection() {
       />
 
       <div className="mx-auto w-[calc(100%-32px)] max-w-[1660px] sm:w-[calc(100%-48px)] lg:w-[calc(100%-96px)] lg:max-xl:max-w-[744px] xl:w-[calc(100%-200px)] xl:px-[24px]">
-        <div className="flex min-w-0 flex-col gap-[16px] lg:flex-row lg:items-start lg:gap-0 lg:max-xl:flex-col lg:max-xl:gap-[12px]">
+        <div className="flex min-w-0 flex-col gap-[16px] lg:flex-row lg:items-start lg:gap-0 lg:max-xl:flex-col lg:max-xl:gap-[12px] max-md:gap-[10px]">
           <span className="shrink-0 font-gilroy text-[12px] font-medium uppercase leading-[1.2] text-[#E8EDFF] lg:w-[215px] lg:pt-[25px] lg:text-[13px] lg:max-xl:w-full lg:max-xl:pt-0">
             Бронь
           </span>
           <h2
             id="booking-heading"
-            className="font-oceanic text-[clamp(34px,7.6vw,56px)] font-medium uppercase leading-[1.035] tracking-[-0.006em] text-[#E8EDFF] lg:text-[clamp(43px,3.9vw,62px)] lg:max-xl:w-full lg:max-xl:min-w-0 lg:max-xl:text-[40px] lg:max-xl:leading-[1.07]"
+            className="font-oceanic text-[clamp(34px,7.6vw,56px)] font-medium uppercase leading-[1.035] tracking-[-0.006em] text-[#E8EDFF] lg:text-[clamp(43px,3.9vw,62px)] lg:max-xl:w-full lg:max-xl:min-w-0 lg:max-xl:text-[40px] lg:max-xl:leading-[1.07] max-md:text-[26px] max-md:leading-[1.02]"
           >
             <span className="block">Забронируйте свое место</span>
             <span className="block lg:-ml-[215px] lg:max-xl:ml-0">за лучшим столом</span>
           </h2>
         </div>
 
-        <div className="mt-[56px] grid grid-cols-1 items-start gap-[45px] xl:mt-[65px] xl:grid-cols-[minmax(0,1.07fr)_minmax(0,1fr)] xl:gap-[clamp(32px,4.2vw,64px)] lg:max-xl:mt-[24px] lg:max-xl:flex lg:max-xl:flex-col lg:max-xl:gap-[30px]">
-          <form onSubmit={handleSubmit} className="w-full min-w-0 font-gilroy lg:max-xl:order-2" noValidate={false}>
-            <div className="grid grid-cols-1 gap-[20px] sm:grid-cols-2">
+        <div className="mt-[56px] grid grid-cols-1 items-start gap-[45px] xl:mt-[65px] xl:grid-cols-[minmax(0,1.07fr)_minmax(0,1fr)] xl:gap-[clamp(32px,4.2vw,64px)] lg:max-xl:mt-[24px] lg:max-xl:flex lg:max-xl:flex-col lg:max-xl:gap-[30px] max-md:mt-[28px] max-md:gap-[18px]">
+          <form onSubmit={handleSubmit} className="w-full min-w-0 font-gilroy lg:max-xl:order-2 max-md:order-2">
+            <div className="pointer-events-none absolute -left-[9999px] h-[1px] w-[1px] overflow-hidden" aria-hidden="true">
+              <label>Не заполняйте это поле<input type="text" name="website" tabIndex={-1} autoComplete="off" /></label>
+            </div>
+            <div className="grid grid-cols-1 gap-[20px] sm:grid-cols-2 max-md:grid-cols-1 max-md:gap-[12px]">
               <label className={labelClasses}>
                 Имя:
                 <input type="text" name="guestName" autoComplete="name" required maxLength={90} className={inputClasses} />
               </label>
               <label className={labelClasses}>
                 Телефон:
-                <input type="tel" name="phone" autoComplete="tel" required maxLength={35} className={inputClasses} />
+                <input type="tel" name="phone" autoComplete="tel" inputMode="tel" required maxLength={35} className={inputClasses} />
               </label>
             </div>
 
-            <div className="mt-[24px] grid grid-cols-1 gap-[20px] sm:grid-cols-3">
+            <div className="mt-[24px] grid grid-cols-1 gap-[20px] sm:grid-cols-3 max-md:mt-[12px] max-md:grid-cols-2 max-md:gap-[10px]">
               <label className={labelClasses}>
                 Дата:
                 <input type="date" name="date" required className={inputClasses} />
@@ -67,43 +134,49 @@ export function BookingSection() {
                 Время:
                 <input type="time" name="time" required className={inputClasses} />
               </label>
-              <label className={labelClasses}>
+              <label className={`${labelClasses} max-md:col-span-2`}>
                 Кол-во гостей:
                 <input type="number" name="guests" min={1} max={30} required className={inputClasses} />
               </label>
             </div>
 
-            <label className={`${labelClasses} mt-[24px]`}>
+            <label className={`${labelClasses} mt-[24px] max-md:mt-[12px]`}>
               Ваши пожелания:
               <textarea
                 name="wishes"
                 rows={5}
                 maxLength={1200}
-                className="mt-[9px] block h-[188px] min-w-0 lg:max-xl:h-[140px] w-full resize-none rounded-none border border-[#E8EDFF]/80 bg-transparent px-[15px] py-[12px] font-gilroy text-[19px] lg:max-xl:text-[16px] text-[#E8EDFF] outline-none transition-colors focus:border-[#E9663D] focus-visible:ring-1 focus-visible:ring-[#E9663D]"
+                className="mt-[9px] block h-[188px] min-w-0 lg:max-xl:h-[140px] w-full resize-none rounded-none border border-[#E8EDFF]/80 bg-transparent px-[15px] py-[12px] font-gilroy text-[19px] lg:max-xl:text-[16px] text-[#E8EDFF] outline-none transition-colors focus:border-[#E9663D] focus-visible:ring-1 focus-visible:ring-[#E9663D] max-md:mt-[5px] max-md:h-[86px] max-md:px-[8px] max-md:py-[9px] max-md:text-[14px]"
               />
+            </label>
+
+            <label className="mt-[20px] flex items-start gap-[10px] font-gilroy text-[13px] leading-[1.35] text-[#E8EDFF] max-md:mt-[14px] max-md:text-[11px]">
+              <input type="checkbox" name="consent" required className="mt-[2px] h-[17px] w-[17px] shrink-0 accent-[#E9663D]" />
+              <span>Согласен(на) на обработку данных для рассмотрения заявки. <a href="/privacy" className="underline underline-offset-2 hover:text-white">Политика конфиденциальности</a></span>
             </label>
 
             <button
               type="submit"
-              className="mt-[38px] flex h-[78px] lg:max-xl:h-[58px] lg:max-xl:mt-[26px] lg:max-xl:text-[16px] w-full items-center justify-center border-0 bg-[#E9663D] px-[20px] font-gilroy text-[23px] font-medium text-[#E8EDFF] transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E8EDFF]"
+              disabled={submitState === "sending"}
+              className="mt-[38px] flex h-[78px] lg:max-xl:h-[58px] lg:max-xl:mt-[26px] lg:max-xl:text-[16px] w-full items-center max-md:mt-[16px] max-md:h-[49px] max-md:text-[16px] justify-center border-0 bg-[#E9663D] px-[20px] font-gilroy text-[23px] font-medium text-[#E8EDFF] transition-opacity hover:opacity-85 disabled:cursor-wait disabled:opacity-65 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E8EDFF]"
             >
-              Забронировать
+              {submitState === "sending" ? "Отправляем..." : "Забронировать"}
             </button>
             {formMessage && (
-              <p role="status" className="mt-[18px] max-w-[610px] font-gilroy text-[17px] leading-[1.35] text-[#E8EDFF]">
+              <p role={submitState === "error" ? "alert" : "status"} aria-live="polite" className="mt-[18px] max-w-[610px] font-gilroy text-[17px] max-md:text-[12px] leading-[1.35] text-[#E8EDFF]">
                 {formMessage}
               </p>
             )}
           </form>
 
-          <div className="relative w-full min-w-0 max-w-full overflow-hidden lg:max-xl:order-1">
+          <div className="relative w-full min-w-0 max-w-full overflow-hidden lg:max-xl:order-1 max-md:order-1">
             <Image
               src="/images/fish-dish.png"
               alt="Рыбное блюдо на столе у аквариума ресторана AQUARIM"
               width={550}
               height={470}
               sizes="(min-width: 1440px) 590px, (min-width: 1024px) 42vw, 100vw"
-              className="block aspect-[590/500] h-auto w-full max-w-full object-cover lg:max-xl:h-[430px] lg:max-xl:aspect-auto"
+              className="block aspect-[590/500] h-auto w-full max-w-full object-cover lg:max-xl:h-auto lg:max-xl:aspect-[550/470] max-md:aspect-[550/470] max-md:h-auto max-md:w-full"
             />
           </div>
         </div>

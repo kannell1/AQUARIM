@@ -15,22 +15,22 @@ const visitorLinks = [
 export function Footer() {
   return (
     <footer className="relative w-full bg-[#345088] text-[#E8EDFF]">
-      <div className="mx-auto w-[calc(100%-32px)] max-w-[1660px] pb-[46px] pt-[48px] sm:w-[calc(100%-48px)] lg:w-[calc(100%-96px)] lg:max-xl:max-w-[744px] lg:pb-[66px] lg:pt-[64px] lg:max-xl:pt-[40px] lg:max-xl:pb-[38px] xl:w-[calc(100%-200px)] xl:px-[24px]">
-        <div className="grid gap-x-[28px] gap-y-[42px] sm:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,0.87fr)_minmax(0,0.77fr)] lg:gap-x-[clamp(30px,5vw,86px)] lg:max-xl:grid-cols-[190px_225px_minmax(0,1fr)] lg:max-xl:gap-x-[35px]">
-          <p className="font-gilroy text-[17px] leading-[1.3] sm:col-span-2 sm:text-[19px] lg:col-span-1 lg:max-xl:text-[15px]">
+      <div className="mx-auto w-[calc(100%-32px)] max-w-[1660px] pb-[46px] pt-[48px] sm:w-[calc(100%-48px)] lg:w-[calc(100%-96px)] lg:max-xl:max-w-[744px] lg:pb-[66px] lg:pt-[64px] lg:max-xl:pt-[40px] lg:max-xl:pb-[38px] xl:w-[calc(100%-200px)] xl:px-[24px] max-md:pt-[26px] max-md:pb-[26px]">
+        <div className="grid gap-x-[28px] gap-y-[42px] sm:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,0.87fr)_minmax(0,0.77fr)] lg:gap-x-[clamp(30px,5vw,86px)] lg:max-xl:grid-cols-[190px_225px_minmax(0,1fr)] lg:max-xl:gap-x-[35px] max-md:gap-y-[29px]">
+          <p className="font-gilroy text-[17px] leading-[1.3] sm:col-span-2 sm:text-[19px] lg:col-span-1 lg:max-xl:text-[15px] max-md:text-[12px]">
             © 2018–2024 AQUARIM
           </p>
 
-          <nav aria-label="О ресторане">
-            <h2 className="font-oceanic text-[25px] font-medium uppercase leading-[1.1] sm:text-[26px] lg:text-[clamp(19px,1.6vw,26px)] lg:max-xl:text-[21px]">
+          <nav aria-label="О ресторане" className="max-md:text-center">
+            <h2 className="font-oceanic text-[25px] font-medium uppercase leading-[1.1] sm:text-[26px] lg:text-[clamp(19px,1.6vw,26px)] lg:max-xl:text-[21px] max-md:text-[20px]">
               О ресторане
             </h2>
-            <ul className="mt-[22px] flex flex-col gap-[10px] sm:mt-[18px]">
+            <ul className="mt-[22px] flex flex-col gap-[10px] sm:mt-[18px] max-md:mt-[12px] max-md:gap-[7px]">
               {aboutLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="font-gilroy text-[18px] leading-[1.25] transition-opacity hover:opacity-75 sm:text-[20px] lg:max-xl:text-[15px]"
+                    className="font-gilroy text-[18px] leading-[1.25] transition-opacity hover:opacity-75 sm:text-[20px] lg:max-xl:text-[15px] max-md:text-[12px]"
                   >
                     {link.label}
                   </a>
@@ -39,16 +39,16 @@ export function Footer() {
             </ul>
           </nav>
 
-          <nav aria-label="Для посетителей" className="lg:col-start-3">
-            <h2 className="font-oceanic text-[25px] font-medium uppercase leading-[1.1] sm:text-[26px] lg:text-[clamp(19px,1.6vw,26px)] lg:max-xl:text-[21px]">
+          <nav aria-label="Для посетителей" className="lg:col-start-3 max-md:text-center">
+            <h2 className="font-oceanic text-[25px] font-medium uppercase leading-[1.1] sm:text-[26px] lg:text-[clamp(19px,1.6vw,26px)] lg:max-xl:text-[21px] max-md:text-[20px]">
               Для посетителей
             </h2>
-            <ul className="mt-[22px] flex flex-col gap-[10px] sm:mt-[18px]">
+            <ul className="mt-[22px] flex flex-col gap-[10px] sm:mt-[18px] max-md:mt-[12px] max-md:gap-[7px]">
               {visitorLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="font-gilroy text-[18px] leading-[1.25] transition-opacity hover:opacity-75 sm:text-[20px] lg:max-xl:text-[15px]"
+                    className="font-gilroy text-[18px] leading-[1.25] transition-opacity hover:opacity-75 sm:text-[20px] lg:max-xl:text-[15px] max-md:text-[12px]"
                   >
                     {link.label}
                   </a>
@@ -61,14 +61,13 @@ export function Footer() {
         <a
           href="#top"
           aria-label="AQUARIM — вернуться наверх страницы"
-          className="mt-[70px] block w-fit max-w-full font-oceanic text-[clamp(58px,16vw,105px)] font-medium uppercase leading-[0.95] tracking-[-0.01em] text-[#253F74] transition-opacity hover:opacity-85 sm:mt-[74px] lg:mt-[72px] lg:text-[clamp(170px,16.9vw,305px)] lg:max-xl:text-[155px] lg:max-xl:mt-[65px]"
+          className="mt-[70px] block w-fit max-w-full font-oceanic text-[clamp(58px,16vw,105px)] font-medium uppercase leading-[0.95] tracking-[-0.01em] text-[#253F74] transition-opacity hover:opacity-85 sm:mt-[74px] lg:mt-[72px] lg:text-[clamp(170px,16.9vw,305px)] lg:max-xl:text-[155px] lg:max-xl:mt-[65px] max-md:mt-[48px] max-md:w-full max-md:text-center max-md:text-[clamp(44px,15vw,65px)]"
         >
           AQUARIM
         </a>
 
-        <div className="mt-[34px] flex flex-col gap-[14px] font-gilroy text-[15px] leading-[1.3] sm:flex-row sm:items-center sm:justify-between sm:text-[17px] lg:mt-[74px] lg:max-xl:mt-[42px] lg:max-xl:text-[15px]">
-          {/* Текст политики из макета; ссылку добавим, когда будет готова сама политика. */}
-          <span>Политика обработки персональных данных</span>
+        <div className="mt-[34px] flex flex-col gap-[14px] font-gilroy text-[15px] leading-[1.3] sm:flex-row sm:items-center sm:justify-between sm:text-[17px] lg:mt-[74px] lg:max-xl:mt-[42px] lg:max-xl:text-[15px] max-md:mt-[23px] max-md:gap-[10px] max-md:text-[10px]">
+          <a href="/privacy" className="transition-opacity hover:opacity-75">Политика обработки персональных данных</a>
           <span>Design by @sshultse</span>
         </div>
       </div>

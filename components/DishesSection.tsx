@@ -55,30 +55,61 @@ export function DishesSection() {
     <section
       id="menu"
       aria-labelledby="dishes-heading"
-      className="relative mx-auto w-[calc(100%-32px)] max-w-[1660px] scroll-mt-[40px] pb-[70px] pt-[55px] sm:w-[calc(100%-48px)] sm:pb-[80px] lg:w-[calc(100%-96px)] lg:max-xl:max-w-[744px] lg:max-xl:pt-[55px] lg:max-xl:pb-[90px] xl:w-[calc(100%-200px)] lg:pb-[75px] lg:pt-[55px]"
+      className="relative mx-auto w-[calc(100%-32px)] max-w-[1660px] scroll-mt-[40px] pb-[70px] pt-[55px] sm:w-[calc(100%-48px)] sm:pb-[80px] lg:w-[calc(100%-96px)] lg:max-xl:max-w-[744px] lg:max-xl:pt-[55px] lg:max-xl:pb-[90px] xl:w-[calc(100%-200px)] lg:pb-[75px] lg:pt-[55px] max-md:pt-[40px] max-md:pb-[54px]"
     >
       {/* Маленькая подпись слева и заголовок в две строки — по макету. */}
-      <div className="flex flex-col gap-[18px] lg:flex-row lg:items-baseline lg:gap-[78px]">
+      <div className="flex flex-col gap-[18px] lg:flex-row lg:items-baseline lg:gap-[78px] max-md:gap-[10px]">
         <span className="shrink-0 text-[11px] font-medium uppercase tracking-[0.06em] lg:w-[122px]">
           Меню
         </span>
         <h2
           id="dishes-heading"
-          className="font-oceanic text-[clamp(34px,8.3vw,68px)] font-medium uppercase leading-[1.06] tracking-[-0.012em] lg:text-[clamp(52px,5.55vw,76px)] lg:max-xl:text-[36px]"
+          className="font-oceanic text-[clamp(34px,8.3vw,68px)] font-medium uppercase leading-[1.06] tracking-[-0.012em] lg:text-[clamp(52px,5.55vw,76px)] lg:max-xl:text-[36px] max-md:text-[26px] max-md:leading-[1.04]"
         >
           Блюда, которые навсегда
         </h2>
       </div>
-      <p className="font-oceanic text-[clamp(34px,8.3vw,68px)] font-medium uppercase leading-[1.06] tracking-[-0.012em] lg:text-[clamp(52px,5.55vw,76px)]">
+      <p className="font-oceanic text-[clamp(34px,8.3vw,68px)] font-medium uppercase leading-[1.06] tracking-[-0.012em] lg:text-[clamp(52px,5.55vw,76px)] max-md:text-[26px] max-md:leading-[1.04]">
         Запомнятся вам
       </p>
 
+      {/* Мобильный блок: тарелка в потоке, с нижней частью на синей карточке. */}
+      <div id="featured-dish" role="region" aria-roledescription="карусель" aria-label="Фирменные блюда" className="relative mt-[38px] md:hidden">
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 top-[min(41vw,172px)] bg-[#496192]" />
+        <div className="relative z-10 mx-auto aspect-square w-[min(88vw,350px)]">
+          <Image
+            key={dish.image}
+            src={dish.image}
+            alt={dish.alt}
+            fill
+            sizes="(max-width: 767px) 88vw, 350px"
+            className="pointer-events-none object-contain select-none"
+          />
+        </div>
+        <div aria-live="polite" aria-atomic="true" className="relative z-10 px-[22px] pb-[18px] pt-[32px]">
+          <h3 className="font-oceanic text-[22px] font-medium uppercase leading-[1.05] text-[#E8EDFF]">{dish.title}</h3>
+          <p className="mt-[14px] font-gilroy text-[12px] leading-[1.28] text-[#E8EDFF]">{dish.description}</p>
+          <p className="mt-[14px] font-gilroy text-[12px] font-semibold leading-[1.2] text-[#E8EDFF]">{dish.price}</p>
+          <button
+            type="button"
+            onClick={addToCart}
+            className="mt-[22px] flex h-[54px] w-full items-center justify-center bg-[#E9663D] font-gilroy text-[16px] font-medium text-[#E8EDFF]"
+          >В корзину</button>
+          <div className="mt-[18px] flex items-center justify-between text-[#E8EDFF]">
+            <button type="button" aria-label="Предыдущее блюдо" onClick={() => switchDish(-1)} className="flex h-[38px] w-[44px] items-center justify-start focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E8EDFF]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="h-[22px] w-[22px]" aria-hidden="true"><path d="m15 5-7 7 7 7" /></svg></button>
+            <button type="button" aria-label="Следующее блюдо" onClick={() => switchDish(1)} className="flex h-[38px] w-[44px] items-center justify-end focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E8EDFF]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="h-[22px] w-[22px]" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg></button>
+          </div>
+          <span role="status" className="sr-only">{cartMessage}</span>
+        </div>
+      </div>
+      <a href="#featured-dish" className="mt-[28px] flex h-[60px] w-full items-center justify-center border border-[#E8EDFF]/65 font-gilroy text-[16px] text-[#E8EDFF] md:hidden">Перейти в меню</a>
+
       <div
-        id="featured-dish"
+        id="featured-dish-desktop"
         role="region"
         aria-roledescription="карусель"
         aria-label="Фирменные блюда"
-        className="relative mt-[100px] flex min-h-[590px] items-end bg-[#496192] px-[48px] pb-[42px] pt-[270px] sm:mt-[115px] sm:min-h-[630px] sm:px-[70px] sm:pt-[310px] lg:mt-[76px] lg:min-h-[390px] lg:items-center lg:px-[95px] lg:py-[50px] lg:max-xl:mt-[26px] lg:max-xl:min-h-[355px] lg:max-xl:px-[65px] lg:max-xl:py-[32px]"
+        className="relative mt-[100px] hidden md:flex min-h-[590px] items-end bg-[#496192] px-[48px] pb-[42px] pt-[270px] sm:mt-[115px] sm:min-h-[630px] sm:px-[70px] sm:pt-[310px] lg:mt-[76px] lg:min-h-[390px] lg:items-center lg:px-[95px] lg:py-[50px] lg:max-xl:mt-[26px] lg:max-xl:min-h-[355px] lg:max-xl:px-[65px] lg:max-xl:py-[32px]"
       >
         <button
           type="button"
@@ -137,8 +168,8 @@ export function DishesSection() {
           Отступ рассчитан от НИЖНЕГО КРАЯ тарелки: половина её диаметра
           минус половина высоты карточки, плюс 30 px до кнопки. */}
       <a
-        href="#featured-dish"
-        className="mx-auto mt-[30px] flex h-[66px] w-[240px] max-w-full items-center justify-center border border-[#496192] text-[18px] text-[#E8EDFF] transition-colors hover:bg-[#496192]/25 lg:mt-[max(30px,calc(min(19.5vw,290px)_-_165px))] lg:max-xl:mt-[30px] lg:max-xl:h-[60px] lg:max-xl:w-[285px] lg:max-xl:text-[16px]"
+        href="#featured-dish-desktop"
+        className="mx-auto mt-[30px] hidden md:flex h-[66px] w-[240px] max-w-full items-center justify-center border border-[#496192] text-[18px] text-[#E8EDFF] transition-colors hover:bg-[#496192]/25 lg:mt-[max(30px,calc(min(19.5vw,290px)_-_165px))] lg:max-xl:mt-[30px] lg:max-xl:h-[60px] lg:max-xl:w-[285px] lg:max-xl:text-[16px]"
       >
         Перейти в меню
       </a>
